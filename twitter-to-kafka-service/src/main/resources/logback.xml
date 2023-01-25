@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<configuration>
+
+    <!-- Konsol ekleyicisini aşağıda verilen Logback.xml dosyasında yapılandırabilirsiniz. -->
+    <appender name = "STDOUT" class = "ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.sss'Z'}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Aşağıda verilen kodu kullanarak Logback.xml dosyasındaki dosya ekleyiciyi yapılandırabilirsiniz.  -->
+    <!-- Dosya ekleyicinin içindeki Günlük dosyası yolunu belirtmeniz gerektiğini unutmayın. -->
+    <appender name = "FILE" class = "ch.qos.logback.core.FileAppender">
+        <File>C:/calismalarim/mylog.log</File>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd'T'HH:mm:ss.sss'Z'}] [%C] [%t] [%L] [%-5p] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--  Aşağıda verilen kodu kullanarak Logback.xml dosyasında ROOT düzeyi gunlugunu yapılandırabilirsiniz -->
+    <root level = "INFO">
+        <appender-ref ref = "FILE"/>
+        <appender-ref ref = "STDOUT"/>
+    </root>
+
+    <!-- paketler ile eslestirme yapacagimiz yer-->
+    <!-- com.microservices.demo siniflarini console ve dosyaya kaydeder -->
+    <logger name = "com.microservices.demo" level="info" additivity="false">
+        <appender-ref ref = "FILE"/>
+        <appender-ref ref = "STDOUT"/>
+    </logger>
+
+</configuration>
