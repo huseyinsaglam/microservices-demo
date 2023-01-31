@@ -17,4 +17,8 @@ public class TwitterToKafkaServiceConfigData {
 
     // twitter-keywords eslemesi
     private List<String> twitterKeywords;
+    private Boolean enableMockTweets;
+    private Long mockSleepMs;
+    private Integer mockMinTweetLength;
+    private Integer mockMaxTweetLength;
 }
